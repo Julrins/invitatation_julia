@@ -80,8 +80,7 @@
         <button class="button" onclick="sendResponse()">Согласна!</button>
     </div>
 
-<!--     <audio id="backgroundSound" src="aot_sound.mp3" autoplay loop preload="auto"></audio> -->
-    <audio id="fireworkSound" src="aot_sound.mp3" preload="auto"></audio>
+    <audio id="backgroundSound" src="aot_sound.mp3" autoplay loop preload="auto"></audio>
 
     <script>
         // Запускаем фейерверки при загрузке страницы
@@ -101,13 +100,6 @@
                     firework.remove();
                 }, 2000); // Удаляем фейерверки через 2 секунды
             }
-            playFireworkSound();
-        }
-
-        function playFireworkSound() {
-            const sound = document.getElementById('fireworkSound');
-            sound.currentTime = 0; // Сбрасываем время воспроизведения
-            sound.play();
         }
 
         function sendResponse() {
