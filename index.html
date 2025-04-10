@@ -59,7 +59,7 @@
             height: 10px;
             border-radius: 50%;
             background-color: #ff69b4;
-            animation: firework 2s infinite;
+            animation: firework 2s;
         }
         @keyframes firework {
             0% {
@@ -80,10 +80,13 @@
         <button class="button" onclick="sendResponse()">Согласна!</button>
     </div>
 
+    <audio id="fireworkSound" src="aot_sound.mp3" preload="auto"></audio>
+
     <script>
         // Запускаем фейерверки при загрузке страницы
         document.addEventListener('DOMContentLoaded', () => {
             createFireworks();
+            setInterval(createFireworks, 2000); // Вызываем функцию каждые 2 секунды
         });
 
         function createFireworks() {
@@ -97,6 +100,13 @@
                     firework.remove();
                 }, 2000); // Удаляем фейерверки через 2 секунды
             }
+            playFireworkSound();
+        }
+
+        function playFireworkSound() {
+            const sound = document.getElementById('fireworkSound');
+            sound.currentTime = 0; // Сбрасываем время воспроизведения
+            sound.play();
         }
 
         function sendResponse() {
