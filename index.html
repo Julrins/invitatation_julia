@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative; /* Для фейерверков */
+        }
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.8); /* Прозрачный фон */
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            animation: fade-in 1s; /* Анимация появления */
+        }
+        h1 {
+            color: #ff6f61;
+            font-size: 24px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Тень текста */
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #ff6f61;
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s; /* Переход цвета */
+        }
+        .button:hover {
+            background-color: #e55b50;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); /* Тень при наведении */
+        }
+        @keyframes fade-in {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        /* Стили для фейерверков */
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ff69b4;
+            animation: firework 2s infinite;
+        }
+        @keyframes firework {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(10);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Самой прекрасной девушке, которую я мог бы встретить</h1>
+        <p>Приглашаю посидеть, отдохнуть вместе на этих выходных</p>
+        <button class="button" onclick="sendResponse()">Согласна!</button>
+    </div>
+
+    <script>
+        // Запускаем фейерверки при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            createFireworks();
+        });
+
+        function createFireworks() {
+            for (let i = 0; i < 50; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                firework.style.top = `${Math.random() * 100}%`;
+                firework.style.left = `${Math.random() * 100}%`;
+                document.body.appendChild(firework);
+                setTimeout(() => {
+                    firework.remove();
+                }, 2000); // Удаляем фейерверки через 2 секунды
+            }
+        }
+
+        function sendResponse() {
+            // Открываем окно сообщения в Telegram
+            window.open('https://t.me/artem_analyze', '_blank');
+            // Или отправляем сообщение через API (если доступно)
+        }
+    </script>
+</body>
+</html>
